@@ -22,7 +22,7 @@ Foreach ($item in $ProfileList) {
  
     #####################################################################
     # This is where you can read/modify a users portion of the registry 
-        reg delete HKCU\SOFTWARE\Infosoft\SoftDent
+        reg delete HKCU\SOFTWARE\Infosoft\SoftDent /f
 
 #####################################################################
  
