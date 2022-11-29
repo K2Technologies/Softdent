@@ -2,7 +2,7 @@ $PatternSID = 'S-1-5-21-\d+-\d+\-\d+\-\d+$'
 # Get Username, SID, and location of ntuser.dat for all users
 $ProfileList = @()
   $ProfileList = "Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\*' | Where-Object { $_.PSChildName ‑match $PatternSID } |
-    Select  @{ name = "SID"; expression = { $_.PSChildName } }",
+    Select  @{ name = 'SID'; expression = { $_.PSChildName } }",
      @{ name = "UserHive"; expression = { "$($_.ProfileImagePath)\ntuser.dat" } },
      @{ name = "Username"; expression = { $_.ProfileImagePath -replace '^(.*[\\\/])', '' } 
         }
@@ -11,7 +11,7 @@ $ProfileList = @()
 
 
 # Get all user SIDs found in HKEY_USERS (ntuser.dat files that are loaded)
-$LoadedHives = "Get-ChildItem Registry::HKEY_USERS | ? { $_.PSChildname ‑match $PatternSID } | Select @{ name = "SID"; expression = { $_.PSChildName } }"
+$LoadedHives = "Get-ChildItem Registry::HKEY_USERS | ? { $_.PSChildname ‑match $PatternSID } | Select @{ name = 'SID'; expression = { $_.PSChildName } }"
 
 
 
